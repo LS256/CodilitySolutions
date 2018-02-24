@@ -1,6 +1,7 @@
 package pl.codeforfun;
 
 /*
+ * mushroom picker
  * @author LS256
  * Exercise from Lesson 5 "Prefix Sums" on codility.com
  * This is exercise example to present how prefix sums are increasing code performance from O(n*m) to O(n+m)
