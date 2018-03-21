@@ -2,9 +2,9 @@ package pl.codeforfun;
 
 public class MaxDoubleSliceSum {
 
-    public void soution(){
-        
+    public int soution(int[] A){
 
+    return 1;
     }
 
 }
