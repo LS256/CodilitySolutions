@@ -2,6 +2,12 @@ package pl.codeforfun;
 
 public class MaxDoubleSliceSum {
 
+    /*
+     *  Solution to Codility lesson 9 "maximum slice problem"
+     *  @param A - array with values taken under investigation
+     *  @return maxVal - calculated maxVal
+     */
+
     public int soution(int[] A){
     //  K1 - array where are kept prefixSums in forward direction
     int[] K1 = new int[A.length];
@@ -28,25 +34,7 @@ public class MaxDoubleSliceSum {
         maxVal = Math.max(maxVal, K1[i-1]+K2[i+1]);
     }
 
-
-        //  Empty lines
-        System.out.println();
-        System.out.println();
-
-    for(int i:K1){
-        System.out.print(i + " ");
-    }
-
-    //  Empty line
-        System.out.println();
-
-    for(int i:K2){
-        System.out.print(i + " ");
-    }
-    System.out.println("maxVal: " + maxVal);
-
-
-    return 1;
+    return maxVal;
     }
 
 }
