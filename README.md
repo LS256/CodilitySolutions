@@ -9,3 +9,50 @@ As this exercise took me some time and its solution is pretty easy there should 
 3. Lesson 7 - "Stone wall" - this allowed to make brain storm. This task traped me a while as I wanted to make it from another point of view - not create blocks when they appear but I wanted to create blocks when they disappear. But nevertheless It was really good brain storm exercise - that's why I appriciate codility.
 
 4. Lesson 9 - "MaxDoubleSliceSum" - nice approach how to find max. sum of array elements with only one for loop. 
+
+
+// you can also use imports, for example:
+ import java.util.*;
+
+// you can write to stdout for debugging purposes, e.g.
+// System.out.println("this is a debug message");
+
+class Solution {
+    public int solution(int[] A) {
+        int results = 0;
+        List<Integer> diff = new ArrayList<Integer>();
+        int prevElement =0;
+        int maxFlags =0;
+        int tmp = 1;
+        
+        for(int i=1; i<A.length-1;i++){
+            if(A[i-1]<A[i] && A[i] > A[i+1]){
+                results++;
+                diff.add(i-prevElement);
+                prevElement = i;
+            }
+        }
+
+        int finalResult = 0;
+        for(int i=results; i>finalResult; i--){
+            finalResult = Math.max(finalResult, getFlags(diff, i));
+        }
+        return finalResult;
+    }
+    
+    private int getFlags(List<Integer> diff, int askedFlags) {
+        int cnt=0;
+        int flags = 1;
+
+        for(int i=1; i<diff.size();i++){
+            cnt+=diff.get(i);
+            if(cnt >= askedFlags) {
+                cnt=0;
+                flags++;
+            }
+        }
+        return flags;
+    }
+    
+    
+}
