@@ -5,17 +5,60 @@ public class Peaks {
 
     }
 
+    
+
+
+
+    //  TODO write a code to  search block size like 20%6 !=0
+
     public int solution(int[] A){
         int[] peaks = getPeaks(A);
         int peaksVolume = getPeaksVolume(peaks);
+        int blockSize = getBlockSize(peaks, peaksVolume);
+
+        int pos =0;
+        int tempBlockSize = 0;
+        while(pos < peaks.length){
+            if((peaks[pos]>0) && (tempBlockSize < blockSize)){
+               pos = ((peaks.length / blockSize) - ((peaks.length - pos - 1) / blockSize)) * blockSize;
+               tempBlockSize = 0;
+ //              System.out.println("blockSize: " + blockSize + "  pos: " + pos);
+            } else {
+                pos++;
+                tempBlockSize++;
+            }
+
+            if(tempBlockSize >= blockSize){
+                tempBlockSize = 0;
+                pos = 0;
+                blockSize++;
+                while((peaks.length % blockSize) != 0) {
+                    blockSize++;
+                }
+            }
 
 
+        }
+        return (peaks.length / blockSize);
+    }
 
-        return 1;
+
+    /*
+     *  getting possible size of block base on founded peaks
+     *  @param
+     *  @return
+     */
+    public int getBlockSize(int[] peaks, int peaksVolume){
+        int preBlockSize = peaksVolume;
+
+        while(( peaks.length % preBlockSize) != 0){
+            preBlockSize--;
+        }
+        return (peaks.length / preBlockSize);
     }
 
     /*
-     *  method to get max possible size of block base on founded peaks
+     *
      *  @param peaks - array with peaks locations
      *  @return result - quantity of peaks
      */
