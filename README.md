@@ -56,3 +56,58 @@ class Solution {
     
     
 }
+
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+
+
+import java.util.*;
+
+class Solution {
+    public int solution(int[] A) {
+        int[] localPeaks = getPeaks(A);
+        boolean onGoing = true;
+        int maxFlags = localPeaks[localPeaks.length-1];
+
+        while(!(check(getPeaks(A), maxFlags))){
+            maxFlags--;        
+  //          System.out.println(maxFlags);
+        }
+       
+       return maxFlags;
+    }
+    
+    public int[] getPeaks(int[] A){
+        int[] peaks = new int[A.length+1];
+        int result = 0;
+        
+        for(int i=1; i<A.length-1; i++) {
+            if( (A[i-1] < A[i]) && (A[i] > A[i+1]) ){
+                peaks[i] = 1; 
+                result++;
+            } else {
+                peaks[i]=0;
+            }
+        }
+        peaks[A.length] = result;
+        return peaks;
+    }
+    
+    public boolean check(int[] peaks, int x){
+        int leftFlags = x;
+        int pos = 0;
+        
+        while(leftFlags > 0 && pos<peaks.length-1) {
+            if(peaks[pos] == 1) {
+                leftFlags--;
+                pos+=x;
+            } else {
+                pos++;
+            }
+        }
+        return leftFlags == 0;  
+    }
+}
+
+
