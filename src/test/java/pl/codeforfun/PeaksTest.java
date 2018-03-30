@@ -13,6 +13,27 @@ public class PeaksTest {
         peaks = new Peaks();
     }
 
+    @Test
+    public void solution2Test() {
+        int[] A = {1, 2, 3, 4, 3, 4, 1, 2, 3, 4, 6, 2};
+        assertEquals(3, peaks.solution2(A));
+
+        int[] A2 = {1, 5, 1, 5, 1, 5, 1, 5, 4, 3, 2, 1, 2, 3, 4, 5, 4, 3, 2, 1};
+        assertEquals(2, peaks.solution2(A2));
+
+        int[] A3 = {1, 5, 1, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+        assertEquals(1, peaks.solution2(A3));
+
+        int[] A4 = {3,4,3};
+        assertEquals(1,peaks.solution2(A4));
+
+        int[] A5 = {1,3,2,3,2,3,2,3,2,3,2,3,2,3,2,3,2};
+        assertEquals(1,peaks.solution2(A5));
+
+        int[] A6 = {1,3,2,3,2,3,2,3,2,3,2,3,2,3,2,2,3,2};
+        assertEquals(6,peaks.solution2(A6));
+
+    }
 
     @Test
     public void solutionTest(){
