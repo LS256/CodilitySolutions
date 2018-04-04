@@ -3,6 +3,7 @@ package pl.codeforfun;
 import java.util.*;
 
 public class Peaks {
+
     Peaks() {
 
     }
