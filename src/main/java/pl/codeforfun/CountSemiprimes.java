@@ -1,3 +1,4 @@
+
 package pl.codeforfun;
 
 public class CountSemiprimes {
@@ -27,10 +28,6 @@ public class CountSemiprimes {
         }
         return factors;
     }
-
-
-
-
 
 
     public boolean[] getSemiprimes(int N, boolean[] primes){
